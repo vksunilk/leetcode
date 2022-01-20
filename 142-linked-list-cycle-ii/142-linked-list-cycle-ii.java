@@ -11,19 +11,27 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        if(head==null || head.next==null) return null;
-	    ListNode slow = head, fast = head;
-	    while(fast != null && fast.next != null) {
-		    fast = fast.next.next;
-		    slow = slow.next;
-		    if (slow == fast) {
-			    while (head != slow) {
-				    head = head.next;
-				    slow = slow.next;
-			    }
-			    return slow;				
-		    }
-	    }			
-	    return null;
+        	var slow = head;
+	var fast = head;
+
+	// If there's a cycle, let the pointers enter it and meet
+	while (fast != null && fast.next != null) {
+		slow = slow.next;
+		fast = fast.next.next;
+		if (slow == fast)
+			break;
+	}
+
+	// check if there's no cycle
+	if (fast == null || fast.next == null)
+		return null;
+
+	// find the entry point of the cycle
+	slow = head;
+	while (slow != fast) {
+		slow = slow.next;
+		fast = fast.next;
+	}
+	return slow;
     }
 }
