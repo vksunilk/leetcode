@@ -20,8 +20,8 @@ class Solution {
             int sum = n1+n2+carry;
             carry=sum/10;
             result.next= new ListNode(sum%10);
-            l1=(l1!=null && l1.next!=null)?l1.next:null;
-            l2=(l2!=null && l2.next!=null)?l2.next:null;
+            l1=(l1!=null)?l1.next:null;
+            l2=(l2!=null)?l2.next:null;
             result=result.next;
             
         }
