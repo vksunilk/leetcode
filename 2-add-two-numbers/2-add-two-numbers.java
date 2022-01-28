@@ -14,7 +14,7 @@ class Solution {
         ListNode result=null;
         result=dummy;
         int carry=0;
-        while (l1 !=null || l2!=null || carry!=0) {
+        while (l1 !=null || l2!=null) {
             int n1=l1==null?0:l1.val;
             int n2=l2==null?0:l2.val;
             int sum = n1+n2+carry;
@@ -25,6 +25,7 @@ class Solution {
             result=result.next;
             
         }
+        if (carry>0) result.next= new ListNode(carry);
         return dummy.next;
     }
 }
